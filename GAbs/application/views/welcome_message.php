@@ -18,14 +18,14 @@
 
 				// Si c'est un admin qui veut revenir à la page d'accueil, le dirige vers la page admin
 				if ($typeUsr == 'admin') {
-					redirect('http://localhost/GAbs/index.php/admin');
+					redirect('admin');
 				}
 				// mm chose pour ens et etu
 				elseif ($typeUsr == 'enseignant') {
-					redirect('http://localhost/GAbs/index.php/enseignant');
+					redirect('enseignant');
 				}
 				elseif ($typeUsr == 'etudiant') {
-					redirect('http://localhost/GAbs/index.php/etudiant');
+					redirect('etudiant');
 				}
 				// Sinon -> login page :)
 				else

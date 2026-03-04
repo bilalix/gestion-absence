@@ -61,7 +61,7 @@
 				<?php echo "Nombre Total des Absences de l'étudiant ". $EtuAbsInfo->row(0)->nom_etu ." : ". $EtuAbsInfo->num_rows(); ?>
 				<br><br>
 				<button type="button" class="btn btn-default btn">
-		        	<a href="http://localhost/GAbs/index.php/export/exportAbsEtu">
+		        	<a href="<?php echo site_url('export/exportAbsEtu'); ?>">
 				    <span class="glyphicon glyphicon-export" aria-hidden="true"></span>
 				    Export as XLS</a>
 				</button>
@@ -140,7 +140,7 @@
 				<?php echo "Nombre Total des Absences: " . $allAbsInfo->num_rows(); ?>
 				<br><br>
 				<button type="button" class="btn btn-default btn">
-		        	<a href="http://localhost/GAbs/index.php/export/exportAllAbs">
+		        	<a href="<?php echo site_url('export/exportAllAbs'); ?>">
 				    <span class="glyphicon glyphicon-export" aria-hidden="true"></span>
 				    Export Data</a>
 				</button>

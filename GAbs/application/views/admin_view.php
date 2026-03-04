@@ -177,7 +177,7 @@
 	  			<?php echo "Il y en a : <b>" . $adminInfo->num_rows() . " admin(s) </b>" ?>
 	  			<br><br>
 				<button type="button" class="btn btn-default btn">
-		        	<a href="http://localhost/GAbs/index.php/export/exportAllAdmin">
+		        	<a href="<?php echo site_url('export/exportAllAdmin'); ?>">
 				    <span class="glyphicon glyphicon-export" aria-hidden="true"></span>
 				    Export as XLS</a>
 				</button>
@@ -266,7 +266,7 @@
 	  			<?php echo "Il y en a : <b>" . $ensInfo->num_rows() . " enseignant(s) </b>" ?>
 	  			<br><br>
 				<button type="button" class="btn btn-default btn">
-		        	<a href="http://localhost/GAbs/index.php/export/exportAllEns">
+		        	<a href="<?php echo site_url('export/exportAllEns'); ?>">
 				    <span class="glyphicon glyphicon-export" aria-hidden="true"></span>
 				    Export as XLS</a>
 				</button>
@@ -361,7 +361,7 @@
 	  			<?php echo "Il y en a : <b>" . $etuInfo->num_rows() . " etudiant(s) </b>" ?>
 	  			<br><br>
 				<button type="button" class="btn btn-default btn">
-		        	<a href="http://localhost/GAbs/index.php/export/exportAllEtu">
+		        	<a href="<?php echo site_url('export/exportAllEtu'); ?>">
 				    <span class="glyphicon glyphicon-export" aria-hidden="true"></span>
 				    Export as XLS</a>
 				</button>
@@ -406,7 +406,7 @@
 	  			<?php echo "Il y en a : <b>" . $moduleInfo->num_rows() . " module(s) </b>" ?>
 	  			<br><br>
 				<button type="button" class="btn btn-default btn">
-		        	<a href="http://localhost/GAbs/index.php/export/exportAllMdl">
+		        	<a href="<?php echo site_url('export/exportAllMdl'); ?>">
 				    <span class="glyphicon glyphicon-export" aria-hidden="true"></span>
 				    Export as XLS</a>
 				</button>
@@ -480,7 +480,7 @@
 	  			<?php echo "Il y en a : <b>" . $adminInfo->num_rows() . " admin(s) </b>" ?>
 	  			<br><br>
 				<button type="button" class="btn btn-default btn">
-		        	<a href="http://localhost/GAbs/index.php/export/exportAllAdmin">
+		        	<a href="<?php echo site_url('export/exportAllAdmin'); ?>">
 				    <span class="glyphicon glyphicon-export" aria-hidden="true"></span>
 				    Export as XLS</a>
 				</button>

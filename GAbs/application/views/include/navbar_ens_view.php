@@ -11,10 +11,10 @@
     </div>
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
-            <li class="active"><a href="http://localhost/GAbs/index.php/enseignant">Modules &amp; Seances</a></li>
-            <li><a href="http://localhost/GAbs/index.php/enseignant/insertSeance">Creation d'une seance</a></li>
-            <li><a href="http://localhost/GAbs/index.php/absence">Gestion des Absences</a></li>
-            <li><a href="http://localhost/GAbs/index.php/enseignant/listeAbs">Listes des absences</a></li>
+            <li class="active"><a href="<?php echo site_url('enseignant'); ?>">Modules &amp; Seances</a></li>
+            <li><a href="<?php echo site_url('enseignant/insertSeance'); ?>">Creation d'une seance</a></li>
+            <li><a href="<?php echo site_url('absence'); ?>">Gestion des Absences</a></li>
+            <li><a href="<?php echo site_url('enseignant/listeAbs'); ?>">Listes des absences</a></li>
         </ul>
         <div class="col-sm-3 col-md-3 pull-right">
             <form class="navbar-form" role="search">
