@@ -1,10 +1,58 @@
-[Language : French]
+# Gestion d'Absence (GAbs)
 
-# Gestion d’Absence (GAbs)
-*GAbs* est une application web en PHP pour la gestion d’absence ([Demo](https://www.youtube.com/watch?v=qnqLmo-b208)).
+GAbs is a PHP web application for absence management.
 
-## Technologies et Frameworks utilisées:
-* [CodeIgniter](https://codeigniter.com/) (Architecture MVC)
-* [Bootstrap](https://getbootstrap.com/)
-* Language [PHP](http://php.net/)
-* Librairie [PHPExcel](https://github.com/PHPOffice/PHPExcel) (`PHPExcel` est obsolète, il est remplacé par `PhpSpreadsheet`)
+## Stack
+- [CodeIgniter](https://codeigniter.com/) (MVC architecture)
+- [Bootstrap](https://getbootstrap.com/)
+- [PHP](https://www.php.net/)
+- [PHPExcel](https://github.com/PHPOffice/PHPExcel) (deprecated, replaced by PhpSpreadsheet)
+
+## Local Setup
+
+### 1. Prerequisites
+- PHP
+- MySQL/MariaDB
+
+### 2. Create and import the database
+From the repository root:
+
+```bash
+# 1. Create the database
+mysql -e "CREATE DATABASE gabs CHARACTER SET utf8 COLLATE utf8_general_ci;"
+
+# 2. Import the SQL file
+mysql gabs < gabs.sql
+```
+
+### 3. Configure database connection
+Edit `GAbs/application/config/database.php` and set:
+- `hostname` (usually `localhost`)
+- `username`
+- `password`
+- `database` to `gabs`
+
+Note: the SQL dump creates `gabs` (lowercase), so the config should match.
+
+### 4. Configure base URL
+Edit `GAbs/application/config/config.php`:
+
+```php
+$config['base_url'] = 'http://localhost:8000/';
+```
+
+## Run Locally
+Start the PHP built-in server from the `GAbs` directory:
+
+```bash
+cd GAbs
+php -S localhost:8000
+```
+
+Open:
+- `http://localhost:8000/`
+- `http://localhost:8000/index.php/login`
+
+## Default Login (seed data)
+- Username: `bilal`
+- Password: `123`

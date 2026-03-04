@@ -4,8 +4,8 @@ class Insert_model extends CI_Model {
 
 	// Fonction d'insertion des admins
 	public function insert_admin($userData, $adminData) {
-		// insertion dans la table User
-		// Si l'insertion dans la table User est effectue avec success
+		// insertion dans la table user
+		// Si l'insertion dans la table user est effectue avec success
 		if ($this->db->insert('user', $userData)) {
 			// get last id here :)
 			$last_id = $this->db->insert_id();
@@ -27,8 +27,8 @@ class Insert_model extends CI_Model {
 
 	// Fonction d'insertion des enseignants
 	public function insert_ens($userData, $ensData) {
-		// insertion dans la table User
-		// Si l'insertion dans la table User est effectue avec success
+		// insertion dans la table user
+		// Si l'insertion dans la table user est effectue avec success
 		if ($this->db->insert('user', $userData)) {
 			// get last id here :)
 			$last_id = $this->db->insert_id();
@@ -48,8 +48,8 @@ class Insert_model extends CI_Model {
 
 	// Fonction d'insertion des etudiants
 	public function insert_etu($userData, $etuData) {
-		// insertion dans la table User
-		// Si l'insertion dans la table User est effectue avec success
+		// insertion dans la table user
+		// Si l'insertion dans la table user est effectue avec success
 		if ($this->db->insert('user', $userData)) {
 			// get last id here :)
 			$last_id = $this->db->insert_id();
@@ -84,7 +84,7 @@ class Insert_model extends CI_Model {
 	public function insert_module($mdlData) {
 
 		// très simple !
-		if ($this->db->insert('Module', $mdlData))
+		if ($this->db->insert('module', $mdlData))
 			return TRUE;
 		else
 			return FALSE;

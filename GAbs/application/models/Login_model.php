@@ -8,10 +8,10 @@ class Login_model extends CI_Model
           parent::__construct();
      }
 
-     //get the username & password from User
+     //get the username & password from user
      public function get_user($usr, $pwd)
      {
-          $sql = "select * from User where login = '" . $usr . "' and password = '" . md5($pwd) . "'and access = 1"; 
+          $sql = "select * from user where login = '" . $usr . "' and password = '" . md5($pwd) . "'and access = 1"; 
           $query = $this->db->query($sql);
           // s'il existe un user on prend son type et son id_user
           if ($query->num_rows() > 0) {

@@ -1,4 +1,4 @@
-<?php error_reporting(E_ALL ^ E_WARNING); ?>
+<?php error_reporting(E_ALL & ~E_WARNING & ~E_DEPRECATED & ~E_USER_DEPRECATED); ?>
 <?php
 
 if (!defined('BASEPATH'))
@@ -7,7 +7,7 @@ exit('No direct script access allowed');
 /**
 * Description of backup_model
 *
-* @author Admin
+* @author admin
 */
 class Backup_model extends CI_Model {
 

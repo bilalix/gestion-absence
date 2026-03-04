@@ -18,7 +18,7 @@
 				$type_user = array('type_user' => 'enseignant'); 
 
 				// // get l'ancien role
-				// $sql = "SELECT type_user FROM User WHERE id_user = ?";
+				// $sql = "SELECT type_user FROM user WHERE id_user = ?";
 				// $query  = $this->db->query($sql, array($id));
 				// $row = $query->first_row('array');
 				// $old_role = $row['type_user'];
@@ -28,7 +28,7 @@
 				if ($email_ad) {
 
 					// get the user_id de l'utilisateur choisie (recherche par email)
-					$sql = "SELECT id_user FROM Admin WHERE email_admin = ?";
+					$sql = "SELECT id_user FROM admin WHERE email_admin = ?";
 					$query  = $this->db->query($sql, array($email_ad));
 					// wohooooooooooooo ! :D
 					$row = $query->first_row('array');
@@ -43,7 +43,7 @@
 				elseif ($email_et) {
 					
 					// get the user_id de l'utilisateur choisie (recherche par email)
-					$sql = "SELECT id_user FROM Etudiant WHERE email_etu = ?";
+					$sql = "SELECT id_user FROM etudiant WHERE email_etu = ?";
 					$query  = $this->db->query($sql, array($email_et));
 					// wohooooooooooooo ! :D
 					$row = $query->first_row('array');
@@ -65,7 +65,7 @@
 				if ($email_en) {
 
 					// get the user_id de l'utilisateur choisie (recherche par email)
-					$sql = "SELECT id_user FROM Enseignant WHERE email_ens = ?";
+					$sql = "SELECT id_user FROM enseignant WHERE email_ens = ?";
 					$query  = $this->db->query($sql, array($email_en));
 					// wohooooooooooooo ! :D
 					$row = $query->first_row('array');
@@ -79,7 +79,7 @@
 				elseif ($email_et) {
 					
 					// get the user_id de l'utilisateur choisie (recherche par email)
-					$sql = "SELECT id_user FROM Etudiant WHERE email_etu = ?";
+					$sql = "SELECT id_user FROM etudiant WHERE email_etu = ?";
 					$query  = $this->db->query($sql, array($email_et));
 					// wohooooooooooooo ! :D
 					$row = $query->first_row('array');
@@ -101,7 +101,7 @@
 				if ($email_en) {
 
 					// get the user_id de l'utilisateur choisie (recherche par email)
-					$sql = "SELECT id_user FROM Enseignant WHERE email_ens = ?";
+					$sql = "SELECT id_user FROM enseignant WHERE email_ens = ?";
 					$query  = $this->db->query($sql, array($email_en));
 					// wohooooooooooooo ! :D
 					$row = $query->first_row('array');
@@ -115,7 +115,7 @@
 				elseif ($email_ad) {
 					
 					// get the user_id de l'utilisateur choisie (recherche par email)
-					$sql = "SELECT id_user FROM Admin WHERE email_admin = ?";
+					$sql = "SELECT id_user FROM admin WHERE email_admin = ?";
 					$query  = $this->db->query($sql, array($email_ad));
 					// wohooooooooooooo ! :D
 					$row = $query->first_row('array');
@@ -137,10 +137,10 @@
 			// On va passer par 4 etapes :
 			// changer le type
 			$this->db->where('id_user', $id);
-			$this->db->update('User', $type_user);
+			$this->db->update('user', $type_user);
 
 			// selectionner les infos de cet utilisateur
-			$query = $this->db->get_where('Admin', array('id_user' => $id));
+			$query = $this->db->get_where('admin', array('id_user' => $id));
 			$row = $query->first_row('array');
 			$nom = $row['nom_admin'];
 			$prenom = $row['prenom_admin'];
@@ -153,10 +153,10 @@
 			   'prenom_ens' => $prenom,
 			   'email_ens' => $email
 			);
-			$this->db->insert('Enseignant', $data); 
+			$this->db->insert('enseignant', $data); 
 
 			// les supprimer de la table ancienne 
-			$this->db->delete('Admin', array('id_user' => $id)); 
+			$this->db->delete('admin', array('id_user' => $id)); 
 
 		}
 
@@ -165,10 +165,10 @@
 			// On va passer par 4 etapes :
 			// changer le type
 			$this->db->where('id_user', $id);
-			$this->db->update('User', $type_user);
+			$this->db->update('user', $type_user);
 
 			// selectionner les infos de cet utilisateur
-			$query = $this->db->get_where('Etudiant', array('id_user' => $id));
+			$query = $this->db->get_where('etudiant', array('id_user' => $id));
 			$row = $query->first_row('array');
 			$nom = $row['nom_etu'];
 			$prenom = $row['prenom_etu'];
@@ -189,10 +189,10 @@
 			   'photo_ens' => $photo,
 			   'phone_ens' => $phone
 			);
-			$this->db->insert('Enseignant', $data); 
+			$this->db->insert('enseignant', $data); 
 
 			// les supprimer de la table ancienne 
-			$this->db->delete('Etudiant', array('id_user' => $id)); 
+			$this->db->delete('etudiant', array('id_user' => $id)); 
 
 		}
 
@@ -202,10 +202,10 @@
 			// On va passer par 4 etapes :
 			// changer le type
 			$this->db->where('id_user', $id);
-			$this->db->update('User', $type_user);
+			$this->db->update('user', $type_user);
 
 			// selectionner les infos de cet utilisateur
-			$query = $this->db->get_where('Enseignant', array('id_user' => $id));
+			$query = $this->db->get_where('enseignant', array('id_user' => $id));
 			$row = $query->first_row('array');
 			$nom = $row['nom_ens'];
 			$prenom = $row['prenom_ens'];
@@ -218,10 +218,10 @@
 			   'prenom_admin' => $prenom,
 			   'email_admin' => $email
 			);
-			$this->db->insert('Admin', $data); 
+			$this->db->insert('admin', $data); 
 
 			// les supprimer de la table ancienne 
-			$this->db->delete('Enseignant', array('id_user' => $id)); 
+			$this->db->delete('enseignant', array('id_user' => $id)); 
 		}
 
 
@@ -230,10 +230,10 @@
 			// On va passer par 4 etapes :
 			// changer le type
 			$this->db->where('id_user', $id);
-			$this->db->update('User', $type_user);
+			$this->db->update('user', $type_user);
 
 			// selectionner les infos de cet utilisateur
-			$query = $this->db->get_where('Etudiant', array('id_user' => $id));
+			$query = $this->db->get_where('etudiant', array('id_user' => $id));
 			$row = $query->first_row('array');
 			$nom = $row['nom_etu'];
 			$prenom = $row['prenom_etu'];
@@ -246,10 +246,10 @@
 			   'prenom_admin' => $prenom,
 			   'email_admin' => $email
 			);
-			$this->db->insert('Admin', $data); 
+			$this->db->insert('admin', $data); 
 
 			// les supprimer de la table ancienne 
-			$this->db->delete('Etudiant', array('id_user' => $id)); 
+			$this->db->delete('etudiant', array('id_user' => $id)); 
 		}
 
 
@@ -258,10 +258,10 @@
 			// On va passer par 4 etapes :
 			// changer le type
 			$this->db->where('id_user', $id);
-			$this->db->update('User', $type_user);
+			$this->db->update('user', $type_user);
 
 			// selectionner les infos de cet utilisateur
-			$query = $this->db->get_where('Enseignant', array('id_user' => $id));
+			$query = $this->db->get_where('enseignant', array('id_user' => $id));
 			$row = $query->first_row('array');
 			$nom = $row['nom_ens'];
 			$prenom = $row['prenom_ens'];
@@ -283,10 +283,10 @@
 			   'photo_etu' => $photo,
 			   'phone_etu' => $phone
 			);
-			$this->db->insert('Etudiant', $data); 
+			$this->db->insert('etudiant', $data); 
 
 			// les supprimer de la table ancienne 
-			$this->db->delete('Enseignant', array('id_user' => $id)); 
+			$this->db->delete('enseignant', array('id_user' => $id)); 
 
 		}
 
@@ -295,10 +295,10 @@
 			// On va passer par 4 etapes :
 			// changer le type
 			$this->db->where('id_user', $id);
-			$this->db->update('User', $type_user);
+			$this->db->update('user', $type_user);
 
 			// selectionner les infos de cet utilisateur
-			$query = $this->db->get_where('Admin', array('id_user' => $id));
+			$query = $this->db->get_where('admin', array('id_user' => $id));
 			$row = $query->first_row('array');
 			$nom = $row['nom_admin'];
 			$prenom = $row['prenom_admin'];
@@ -312,10 +312,10 @@
 			   'prenom_etu' => $prenom,
 			   'email_etu' => $email
 			);
-			$this->db->insert('Etudiant', $data); 
+			$this->db->insert('etudiant', $data); 
 
 			// les supprimer de la table ancienne 
-			$this->db->delete('Admin', array('id_user' => $id)); 
+			$this->db->delete('admin', array('id_user' => $id)); 
 		}
 
 
