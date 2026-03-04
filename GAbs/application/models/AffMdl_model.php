@@ -22,8 +22,8 @@ class AffMdl_model extends CI_Model {
 			'id_module' => $idMdl
 			);
 
-		// maintenant l'insertion dans la table Affecter :D
-		if ($this->db->insert('Affecter', $AffData))
+		// maintenant l'insertion dans la table affecter :D
+		if ($this->db->insert('affecter', $AffData))
 		 	return TRUE;
 		else
 			return FALSE;
@@ -50,8 +50,8 @@ class AffMdl_model extends CI_Model {
 			'id_module' => $idMdl
 			);
 
-		// maintenant l'insertion dans la table Etudier :D
-		if ($this->db->insert('Etudier', $AffData))
+		// maintenant l'insertion dans la table etudier :D
+		if ($this->db->insert('etudier', $AffData))
 		 	return TRUE;
 		else
 			return FALSE;

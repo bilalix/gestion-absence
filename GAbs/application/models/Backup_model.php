@@ -7,7 +7,7 @@ exit('No direct script access allowed');
 /**
 * Description of backup_model
 *
-* @author Admin
+* @author admin
 */
 class Backup_model extends CI_Model {
 

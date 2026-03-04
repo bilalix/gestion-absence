@@ -66,7 +66,9 @@
 switch (ENVIRONMENT)
 {
 	case 'development':
-		error_reporting(-1);
+		// Keep all useful errors visible in dev, but hide PHP deprecation noise
+		// from this legacy CodeIgniter codebase on newer PHP versions (8.1/8.2+).
+		error_reporting(E_ALL & ~E_DEPRECATED & ~E_USER_DEPRECATED);
 		ini_set('display_errors', 1);
 	break;
 

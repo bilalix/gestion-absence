@@ -5,21 +5,21 @@ class Show_model extends CI_Model {
 	public function etuAbs_show($idUser) {
 
 		// hahaaaa ! get them aaaall :D
-		$sql = "SELECT * FROM Absence, Seance, Module, Etudier, Etudiant 
-			WHERE Absence.id_seance = Seance.id_seance 
-			AND Module.id_module = Seance.id_module 
-			AND Etudier.id_module = Module.id_module 
-			AND Etudier.id_user = Etudiant.id_user 
-			AND Absence.id_user = ?
-			AND Etudiant.id_user = ? ";
+		$sql = "SELECT * FROM absence, seance, module, etudier, etudiant 
+			WHERE absence.id_seance = seance.id_seance 
+			AND module.id_module = seance.id_module 
+			AND etudier.id_module = module.id_module 
+			AND etudier.id_user = etudiant.id_user 
+			AND absence.id_user = ?
+			AND etudiant.id_user = ? ";
 
 		$query  = $this->db->query($sql, array($idUser, $idUser));
 
 		// Si l'etudiant n'a pas d'absence
 		if (empty($query->result())) {
 			// affiche simplement les infos de l'etudiant
-			$query = $this->db->query("SELECT * FROM Etudiant 
-				WHERE Etudiant.id_user = '".$idUser."'");
+			$query = $this->db->query("SELECT * FROM etudiant 
+				WHERE etudiant.id_user = '".$idUser."'");
 
 			return $query;
 		}
@@ -30,8 +30,8 @@ class Show_model extends CI_Model {
 
 	public function all_etu_show() {
 
-		$query = $this->db->query("SELECT * FROM Etudiant, User 
-									WHERE Etudiant.id_user=User.id_user
+		$query = $this->db->query("SELECT * FROM etudiant, user 
+									WHERE etudiant.id_user=user.id_user
 									ORDER BY access DESC");
 
 		return $query; 
@@ -43,8 +43,8 @@ class Show_model extends CI_Model {
 
 		$query = $this->db->query("SELECT CNE, nom_etu, prenom_etu, date_naiss_etu, ville_naiss_etu, 
 									adresse_etu, ville_etu, email_etu, phone_etu 
-									FROM Etudiant, User 
-									WHERE Etudiant.id_user=User.id_user
+									FROM etudiant, user 
+									WHERE etudiant.id_user=user.id_user
 									ORDER BY access DESC");
 
 		return $query; 
@@ -55,8 +55,8 @@ class Show_model extends CI_Model {
 
 	public function all_ens_show() {
 
-		$query = $this->db->query("SELECT * FROM Enseignant, User 
-									WHERE Enseignant.id_user=User.id_user
+		$query = $this->db->query("SELECT * FROM enseignant, user 
+									WHERE enseignant.id_user=user.id_user
 									ORDER BY access DESC");
 
 		return $query; 
@@ -67,8 +67,8 @@ class Show_model extends CI_Model {
 	public function export_all_ens() {
 
 		$query = $this->db->query("SELECT nom_ens, prenom_ens, adresse_ens, ville_ens, email_ens, phone_ens 
-									FROM Enseignant, User 
-									WHERE Enseignant.id_user=User.id_user
+									FROM enseignant, user 
+									WHERE enseignant.id_user=user.id_user
 									ORDER BY access DESC");
 
 		return $query; 
@@ -78,8 +78,8 @@ class Show_model extends CI_Model {
 	public function all_admin_show() { // kant *
 
 		$query = $this->db->query("SELECT login, nom_admin, prenom_admin, email_admin, access 
-									FROM Admin, User 
-									WHERE Admin.id_user=User.id_user
+									FROM admin, user 
+									WHERE admin.id_user=user.id_user
 									ORDER BY access DESC");
 
 		return $query; 
@@ -88,7 +88,7 @@ class Show_model extends CI_Model {
 
 	public function all_module_show() {
 
-		$query = $this->db->query("SELECT * FROM Module");
+		$query = $this->db->query("SELECT * FROM module");
 
 		return $query; 
 
@@ -97,10 +97,10 @@ class Show_model extends CI_Model {
 
 	public function module_show($idUser) {
 
-		$sql = "SELECT * FROM Module, Affecter, Enseignant
-			WHERE Module.id_module=Affecter.id_module
+		$sql = "SELECT * FROM module, affecter, enseignant
+			WHERE module.id_module=affecter.id_module
 			AND enseignant.id_user= ?
-			AND Affecter.id_user= ?";
+			AND affecter.id_user= ?";
 
 		$query  = $this->db->query($sql, array($idUser, $idUser));
 
@@ -110,10 +110,10 @@ class Show_model extends CI_Model {
 
 	public function seance_show($idUser) {
 
-		$sql = "SELECT DISTINCT * FROM Seance, Module, Enseignant
+		$sql = "SELECT DISTINCT * FROM seance, module, enseignant
 			WHERE seance.id_module = module.id_module
-			AND Seance.id_user= ?
-			AND Enseignant.id_user= ?";
+			AND seance.id_user= ?
+			AND enseignant.id_user= ?";
 
 		$query  = $this->db->query($sql, array($idUser, $idUser));
 
@@ -125,8 +125,8 @@ class Show_model extends CI_Model {
 	public function get_id_module($nom_module) {
 
 		// la requete
-		$query = $this->db->query("SELECT id_module FROM Module
-			WHERE Module.intitule_module='".$nom_module."'");
+		$query = $this->db->query("SELECT id_module FROM module
+			WHERE module.intitule_module='".$nom_module."'");
 
 		// on prend id_module
 		$row = $query->row_array(0);
@@ -158,9 +158,9 @@ class Show_model extends CI_Model {
 	public function get_all_abs($idUser) {
 
 		// étape 2 : get id_module from affecter table where id = id_ens (les modules affecter a cet ens)
-		// étape 3 : get nom_module from Module table à l'aide de id_module
-		// étape 4 : get id_etu from Etudier table where id = id_module
-		// étape 5 : get * from Etudiant table where id = id_etu
+		// étape 3 : get nom_module from module table à l'aide de id_module
+		// étape 4 : get id_etu from etudier table where id = id_module
+		// étape 5 : get * from etudiant table where id = id_etu
 		// étape 6 : get * from seance table where id = id_etu
 		// étape 7 : get * from absence table where id = id_etu
 

@@ -6,9 +6,9 @@
 		// fonction pour remplir les champs
 		public function fill_admin($email) {
 
-			$query = $this->db->query("SELECT * FROM Admin, User 
-										WHERE Admin.id_user=User.id_user
-										AND Admin.email_admin='".$email."'");
+			$query = $this->db->query("SELECT * FROM admin, user 
+										WHERE admin.id_user=user.id_user
+										AND admin.email_admin='".$email."'");
 
 			return  $query->row_array(0);
 
@@ -24,12 +24,12 @@
 			// update de la table admin (requete 1)
 			$this->db->where('email_admin', $email);
 			
-			// update de la table Admin
-			if ($this->db->update('Admin', $adminData)) {
+			// update de la table admin
+			if ($this->db->update('admin', $adminData)) {
 				// update de la table user (requete 2)
 				$this->db->where('id_user', $id);
-				// update de la table User
-				if ($this->db->update('User', $userData)) {
+				// update de la table user
+				if ($this->db->update('user', $userData)) {
 					// Si tt ce passe bien, return true :)
 					return true;
 				}
@@ -43,9 +43,9 @@
 		// fonction pour remplir les champs
 		public function fill_ens($email) {
 
-			$query = $this->db->query("SELECT * FROM Enseignant, User 
-										WHERE Enseignant.id_user=User.id_user
-										AND Enseignant.email_ens='".$email."'");
+			$query = $this->db->query("SELECT * FROM enseignant, user 
+										WHERE enseignant.id_user=user.id_user
+										AND enseignant.email_ens='".$email."'");
 
 			return  $query->row_array(0);
 
@@ -58,13 +58,13 @@
 			$pick = $this->fill_ens($email);
 			$id = $pick['id_user']; // ;)
 
-			// update de la table Enseignant (requete 1)
+			// update de la table enseignant (requete 1)
 			$this->db->where('email_ens', $email);
 			
-			if ($this->db->update('Enseignant', $ensData)) {
+			if ($this->db->update('enseignant', $ensData)) {
 				// update de la table user (requete 2)
 				$this->db->where('id_user', $id);
-				if ($this->db->update('User', $userData)) {
+				if ($this->db->update('user', $userData)) {
 					// Si tt ce passe bien, return true :)
 					return true;
 				}
@@ -79,9 +79,9 @@
 		// fonction pour remplir les champs
 		public function fill_etu($email) {
 
-			$query = $this->db->query("SELECT * FROM Etudiant, User 
-										WHERE Etudiant.id_user=User.id_user
-										AND Etudiant.email_etu='".$email."'");
+			$query = $this->db->query("SELECT * FROM etudiant, user 
+										WHERE etudiant.id_user=user.id_user
+										AND etudiant.email_etu='".$email."'");
 
 			return  $query->row_array(0);
 
@@ -94,13 +94,13 @@
 			$pick = $this->fill_etu($email);
 			$id = $pick['id_user']; // ;)
 
-			// update de la table Etudiant (requete 1)
+			// update de la table etudiant (requete 1)
 			$this->db->where('email_etu', $email);
 			
-			if ($this->db->update('Etudiant', $etuData)) {
+			if ($this->db->update('etudiant', $etuData)) {
 				// update de la table user (requete 2)
 				$this->db->where('id_user', $id);
-				if ($this->db->update('User', $userData)) {
+				if ($this->db->update('user', $userData)) {
 					// Si tt ce passe bien, return true :)
 					return true;
 				}
@@ -114,8 +114,8 @@
 		// fonction pour remplir les champs
 		public function fill_module($id) {
 
-			$query = $this->db->query("SELECT * FROM Module 
-										WHERE Module.id_module='".$id."'");
+			$query = $this->db->query("SELECT * FROM module 
+										WHERE module.id_module='".$id."'");
 
 			return  $query->row_array(0);
 
@@ -124,10 +124,10 @@
 		// fonction pour mettre à jour les données
 		public function edit_mdl($id, $mdlData) {
 
-			// update de la table Module
+			// update de la table module
 			$this->db->where('id_module', $id);
 			
-			if ($this->db->update('Module', $mdlData)) {
+			if ($this->db->update('module', $mdlData)) {
 					return true;
 				}
 
