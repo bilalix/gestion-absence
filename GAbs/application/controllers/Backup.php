@@ -1,4 +1,4 @@
-<?php error_reporting(E_ALL ^ E_WARNING); ?>
+<?php error_reporting(E_ALL & ~E_WARNING & ~E_DEPRECATED & ~E_USER_DEPRECATED); ?>
 <?php
 if (!defined('BASEPATH'))
 exit('No direct script access allowed');
@@ -92,7 +92,7 @@ parent::__construct();
 $this->load->dbutil();
 $this->load->library('zip');
 $this->load->library('form_validation');
-$this->load->model('backup_model', 'backup');
+$this->load->model('Backup_model', 'backup');
 $this->back_url = $this->session->flashdata($this->back_url_key);
 }
 
